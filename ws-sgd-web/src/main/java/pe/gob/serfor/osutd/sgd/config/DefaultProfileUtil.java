@@ -31,7 +31,7 @@ public class DefaultProfileUtil {
 	                return activeProfile;
 	            }
 	        }
-	        log.warn("No Spring profile configured, running with default profile: {}", "dev");
+	        log.warn("No Spring profile configured, running with default profile: {}", "dev ");
 	        return "dev";
 	    }
 
