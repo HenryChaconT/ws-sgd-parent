@@ -1,0 +1,31 @@
+# ===================================================================
+# Spring Boot configuration - Dev
+# ===================================================================
+
+spring:
+    jackson:
+        serialization.indent_output: true
+    datasource:
+       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+       url: jdbc:sqlserver://LPSOPORTESGD\MSSQLSERVER01;databaseName=SGD;encrypt=false;trustServerCertificate=true;
+       name: SGD
+       username: sa
+       password: "sql2019"
+    acceso-datasource:
+       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+       url: jdbc:sqlserver://LPSOPORTESGD\MSSQLSERVER01;databaseName=SGD;encrypt=false;trustServerCertificate=true;
+       name: SGD
+       username: sa
+       password: "sql2019"
+    jpa:
+        database-platform: org.hibernate.dialect.SQLServer2012Dialect
+        database: SQL_SERVER
+        show-sql: true
+        properties:
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+
+serfor:
+  seguridad:
+    ldap: 10.6.0.10

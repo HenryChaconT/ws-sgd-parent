@@ -1,0 +1,28 @@
+# ===================================================================
+# Spring Boot configuration - Application
+# ===================================================================
+
+spring:
+    application.name: ws-sgd
+    profiles:
+        active: prod
+    servlet:
+      multipart:
+        enabled: true
+        max-file-size: 83886080 #80 MB
+        max-request-size: 83886080 #80 MB
+                
+server:
+    port: 8383
+
+serfor:
+    #SIGLAS DEL SISTEMA: Componente Documentario para la MPV
+    sistema: AP
+    https: false
+    cors: # By default CORS is disabled. Uncomment to enable.
+        allowed-origins: "*"
+        allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+        allowed-headers: "*"
+        exposed-headers:
+        allow-credentials: true
+        max-age: 1800

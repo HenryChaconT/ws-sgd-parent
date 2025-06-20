@@ -1,0 +1,45 @@
+# Log4j 2 - Configurado con registro asincrono
+Configuration:
+  #status: info
+  #monitorInterval: 30
+
+  appenders:
+    Console:
+      name: LogToConsole
+      #target: SYSTEM_OUT
+      #follow: true
+      PatternLayout:
+        Pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+        
+    #RollingFile:
+    RollingRandomAccessFile:
+        name: LogToRollingFile
+        fileName: logs/apps/ws-sgd/ws-sgd.log
+        filePattern: "/logs/apps/ws-sgd/$${date:yyyy-MM}/ws-sgd-%d{MM-dd-yyyy}-%i.log.gz"
+        PatternLayout:
+          pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 1 MB
+        DefaultRollOverStrategy:
+          max: 10
+
+  Loggers:
+  
+    Root:
+      level: error
+      AppenderRef:
+        ref: LogToConsole
+  
+    #logger:          
+    AsyncLogger:
+      - name: pe.gob.serfor.osutd.sgd
+        level: debug
+        additivity: false
+        AppenderRef:
+          - ref: LogToConsole
+            level: info
+          - ref: LogToRollingFile
+            level: info
+
+    
